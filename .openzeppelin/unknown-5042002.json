@@ -1,0 +1,347 @@
+{
+  "manifestVersion": "3.2",
+  "proxies": [
+    {
+      "address": "0xD39EA4F975c67fA8120eFdD1895C28C360076FfF",
+      "txHash": "0xf24d851cfb342c69169ee2be7a2276216af46a66ffd43d1e6dc6df0e008d8ef9",
+      "kind": "uups"
+    }
+  ],
+  "impls": {
+    "a0e40b657d651aa7f08c68c4e62729b6bc0eb1d3e75b2510459bb6029240f867": {
+      "address": "0x64Ac1B3303C60F7C54f66903AD98C796F27FD40c",
+      "txHash": "0x7f05c549423acb36ba0f599f48956e19005ed52cc0cbb179db9fcf63adf09c3e",
+      "layout": {
+        "solcVersion": "0.8.20",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ERC1967UpgradeUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\ERC1967\\ERC1967UpgradeUpgradeable.sol:169"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "UUPSUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\UUPSUpgradeable.sol:111"
+          },
+          {
+            "label": "owner",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_address",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:57"
+          },
+          {
+            "label": "pendingOwner",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_address",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:58"
+          },
+          {
+            "label": "trustedSigner",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_address",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:59"
+          },
+          {
+            "label": "paused",
+            "offset": 20,
+            "slot": "103",
+            "type": "t_bool",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:60"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_uint256",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:63"
+          },
+          {
+            "label": "roundDuration",
+            "offset": 0,
+            "slot": "105",
+            "type": "t_uint256",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:66"
+          },
+          {
+            "label": "platformFeeBps",
+            "offset": 0,
+            "slot": "106",
+            "type": "t_uint256",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:67"
+          },
+          {
+            "label": "entryFees",
+            "offset": 0,
+            "slot": "107",
+            "type": "t_array(t_uint256)5_storage",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:68"
+          },
+          {
+            "label": "totalRefundable",
+            "offset": 0,
+            "slot": "112",
+            "type": "t_uint256",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:71"
+          },
+          {
+            "label": "totalPendingWithdrawals",
+            "offset": 0,
+            "slot": "113",
+            "type": "t_uint256",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:72"
+          },
+          {
+            "label": "pendingWithdrawals",
+            "offset": 0,
+            "slot": "114",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:75"
+          },
+          {
+            "label": "pools",
+            "offset": 0,
+            "slot": "115",
+            "type": "t_mapping(t_uint256,t_struct(Pool)1221_storage)",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:93"
+          },
+          {
+            "label": "_hasJoined",
+            "offset": 0,
+            "slot": "116",
+            "type": "t_mapping(t_uint256,t_mapping(t_uint256,t_mapping(t_address,t_bool)))",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:96"
+          },
+          {
+            "label": "_hasCompleted",
+            "offset": 0,
+            "slot": "117",
+            "type": "t_mapping(t_uint256,t_mapping(t_uint256,t_mapping(t_address,t_bool)))",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:97"
+          },
+          {
+            "label": "_hasRefunded",
+            "offset": 0,
+            "slot": "118",
+            "type": "t_mapping(t_uint256,t_mapping(t_uint256,t_mapping(t_address,t_bool)))",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:98"
+          },
+          {
+            "label": "isRefundRound",
+            "offset": 0,
+            "slot": "119",
+            "type": "t_mapping(t_uint256,t_mapping(t_uint256,t_bool))",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:101"
+          },
+          {
+            "label": "refundablePot",
+            "offset": 0,
+            "slot": "120",
+            "type": "t_mapping(t_uint256,t_mapping(t_uint256,t_uint256))",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:102"
+          },
+          {
+            "label": "_usedSignatures",
+            "offset": 0,
+            "slot": "121",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:105"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "122",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "SPARC",
+            "src": "contracts\\SPARC.sol:108"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_struct(Finisher)1203_storage)3_storage": {
+            "label": "struct SPARC.Finisher[3]",
+            "numberOfBytes": "192"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_array(t_uint256)5_storage": {
+            "label": "uint256[5]",
+            "numberOfBytes": "160"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_bool)": {
+            "label": "mapping(uint256 => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_address,t_bool))": {
+            "label": "mapping(uint256 => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_uint256,t_bool))": {
+            "label": "mapping(uint256 => mapping(uint256 => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_uint256,t_mapping(t_address,t_bool)))": {
+            "label": "mapping(uint256 => mapping(uint256 => mapping(address => bool)))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_mapping(t_uint256,t_uint256))": {
+            "label": "mapping(uint256 => mapping(uint256 => uint256))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Pool)1221_storage)": {
+            "label": "mapping(uint256 => struct SPARC.Pool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Finisher)1203_storage": {
+            "label": "struct SPARC.Finisher",
+            "members": [
+              {
+                "label": "player",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "completedAt",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(Pool)1221_storage": {
+            "label": "struct SPARC.Pool",
+            "members": [
+              {
+                "label": "roundId",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "totalPot",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "roundStartTime",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "roundEndTime",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "roundActive",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "finisherCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "topThree",
+                "type": "t_array(t_struct(Finisher)1203_storage)3_storage",
+                "offset": 0,
+                "slot": "6"
+              }
+            ],
+            "numberOfBytes": "384"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        },
+        "namespaces": {}
+      }
+    }
+  }
+}
