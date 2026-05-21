@@ -13,78 +13,67 @@ const ABI = [
 ]
 
 module.exports = async function handler(req, res) {
-  // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
-
   if (req.method === 'OPTIONS') return res.status(200).end()
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
 
   try {
     const { player, poolId } = req.body
 
-    if (!player || poolId === undefined) {
+    if (!player || poolId === undefined)
       return res.status(400).json({ error: 'Missing player or poolId' })
-    }
 
-    if (!ethers.isAddress(player)) {
+    if (!ethers.isAddress(player))
       return res.status(400).json({ error: 'Invalid player address' })
-    }
 
     const provider = new ethers.JsonRpcProvider(RPC_URL)
     const sparc    = new ethers.Contract(SPARC_ADDRESS, ABI, provider)
 
-    // Verify player has joined this pool
+    const info       = await sparc.getPoolInfo(poolId)
+    const endTime    = Number(info[2])
+    const active     = info[3]
+    const roundId    = Number(info[5])
+    const now        = Math.floor(Date.now() / 1000)
+
+    if (!active)
+      return res.status(403).json({ error: 'No active round — check back at the next session.' })
+
+    if (now > endTime)
+      return res.status(403).json({ error: 'This round has ended. A new session starts soon.' })
+
     const joined = await sparc.hasJoined(poolId, player)
-    if (!joined) {
-      return res.status(403).json({ error: 'Player has not joined this pool' })
-    }
+    if (!joined)
+      return res.status(403).json({ error: 'You have not joined this pool. Go back and pay the entry fee first.' })
 
-    // Check if already completed
     const completed = await sparc.hasCompleted(poolId, player)
-    if (completed) {
-      return res.status(403).json({ error: 'Player already completed this round' })
-    }
+    if (completed)
+      return res.status(403).json({ error: 'You already completed this round.' })
 
-    // Get round info
-    const info         = await sparc.getPoolInfo(poolId)
-    const endTime      = Number(info[2])
-    const roundActive  = info[3]
-    const roundId      = Number(info[5])
-
-    if (!roundActive) {
-      return res.status(403).json({ error: 'No active round for this pool' })
-    }
-
-    if (Date.now() / 1000 > endTime) {
-      return res.status(403).json({ error: 'Round has ended' })
-    }
-
-    const duration = Number(await sparc.roundDuration())
-
-    // Image session — same for all players in same round
+    const duration     = Number(await sparc.roundDuration())
     const imageSession = Math.floor(endTime / duration)
 
-    // Unique shuffle seed per player per round — backend controls this
     const shuffleSeed = createHmac('sha256', SESSION_SECRET)
       .update(`shuffle:${player.toLowerCase()}:${poolId}:${roundId}`)
       .digest('hex')
 
-    // Session token — proves this session was legitimately started
+    const startedAt = now
+
     const sessionToken = createHmac('sha256', SESSION_SECRET)
-      .update(`session:${player.toLowerCase()}:${poolId}:${roundId}:${shuffleSeed}`)
+      .update(`session:${player.toLowerCase()}:${poolId}:${roundId}:${shuffleSeed}:${startedAt}`)
       .digest('hex')
 
     return res.status(200).json({
       shuffleSeed,
       imageSession,
       roundId,
-      sessionToken
+      sessionToken,
+      startedAt
     })
 
   } catch (err) {
     console.error('start-session error:', err)
-    return res.status(500).json({ error: 'Failed to start session' })
+    return res.status(500).json({ error: 'Server error. Please try again.' })
   }
 }
