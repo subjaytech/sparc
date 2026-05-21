@@ -29,7 +29,7 @@ module.exports = async function handler(req, res) {
     const { player, poolId, roundId, shuffleSeed, sessionToken, startedAt, tiles } = req.body
 
     if (!player || poolId === undefined || roundId === undefined ||
-        !shuffleSeed || !sessionToken || !startedAt || !tiles)
+    !shuffleSeed || !sessionToken || !tiles)
       return res.status(400).json({ error: 'Missing required fields' })
 
     if (!ethers.isAddress(player))
@@ -90,7 +90,7 @@ module.exports = async function handler(req, res) {
     const signature = await signer.signMessage(ethers.getBytes(msgHash))
 
     // Calculate exact solving time in seconds
-    const solvingSeconds = now - Number(startedAt)
+    const solvingSeconds = startedAt ? Math.floor(Date.now() / 1000) - Number(startedAt): null
 
     console.log(`Signed: player=${player} pool=${poolId} round=${roundId} solveTime=${solvingSeconds}s`)
 
