@@ -469,7 +469,6 @@ export default function PuzzleGame({ wallet, selectedPool, setGameActive }) {
                 <div className="flex justify-between"><span>🥈 2nd place</span><span className="font-black text-slate-400">30%</span></div>
                 <div className="flex justify-between"><span>🥉 3rd place</span><span className="font-black text-amber-600">19.7%</span></div>
                 <div className="flex justify-between pt-2 border-t border-slate-200 dark:border-white/10 text-xs text-slate-400">
-                  <span>Platform fee</span><span>0.3%</span>
                 </div>
               </div>
             </div>

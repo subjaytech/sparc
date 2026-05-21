@@ -57,7 +57,7 @@ export default function PoolSelector({ wallet, selectedPool, setSelectedPool, se
           Choose Your Pool
         </h1>
         <p className="text-slate-500 dark:text-slate-400 text-sm">
-          Top 3 fastest solvers share the prize pool · 6-hour rounds · Powered by USDC on Arc
+          Top 3 fastest solvers share the prize pool · 6-hour rounds 
         </p>
       </div>
 
@@ -97,7 +97,6 @@ export default function PoolSelector({ wallet, selectedPool, setSelectedPool, se
         <div className="flex flex-wrap justify-center gap-6 text-xs text-slate-400 dark:text-slate-500 border border-slate-200 dark:border-white/10 rounded-xl px-8 py-4 bg-white dark:bg-white/5">
           <span>⏱ 6-hour rounds</span>
           <span>🏆 Top 3 win</span>
-          <span>💰 0.3% platform fee</span>
           <span>🔗 Settled on Arc</span>
           <span>💵 USDC prizes</span>
         </div>

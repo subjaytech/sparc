@@ -43,6 +43,13 @@ module.exports = async function handler(req, res) {
     if (sessionToken !== expectedToken)
       return res.status(403).json({ error: 'Invalid session — please refresh and try again.' })
 
+    // Enforce minimum human solving time
+    const solvingSeconds = startedAt ? Math.floor(Date.now() / 1000) - Number(startedAt): 999
+
+    if (solvingSeconds < 30) {
+      return res.status(400).json({ error: 'Solving time too fast. Please play the game.' })
+    }
+
     // Verify shuffle seed belongs to this player
     const expectedSeed = createHmac('sha256', SESSION_SECRET)
       .update(`shuffle:${player.toLowerCase()}:${poolId}:${roundId}`)
